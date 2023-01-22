@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import { View, StyleSheet, Text, Button, Image } from 'react-native';
+
+import Index from './components/Index';
+import InputNotes from './components/InputNotes';
+
+const Stack = createStackNavigator();
+
+export default class App extends Component {
+  render() {
+    return (
+     <NavigationContainer > 
+      <Stack.Navigator >
+        <Stack.Screen component={Index} name="Index" options={{ title: "PAKOPIA"}}/>
+        <Stack.Screen component={InputNotes} name="InputNotes"
+                  options={{headerRight: () => (<Image />),}}/>
+      </Stack.Navigator>
+     </NavigationContainer>
+     
+     
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = StyleSheet.create ({
+  
+})
